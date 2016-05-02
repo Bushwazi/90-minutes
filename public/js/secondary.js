@@ -4,7 +4,6 @@ var TweetBox = React.createClass({
     tweet_request.open('GET', this.props.url, true);
     tweet_request.onload = function() {
       if (this.status >= 200 && this.status < 400) {
-        // Success!
         var data = JSON.parse(this.response);
         this.setState({data: data});
       } else {
@@ -35,7 +34,6 @@ var TweetBox = React.createClass({
 var TweetList = React.createClass({
   render: function() {
     var tweetNodes = this.props.data.map(function(tweet,ind,arr){
-      console.log(tweet)
         return (
           <Tweet author={tweet["user"]["screen_name"]} key={tweet["id"]}>
             {tweet["text"]}
@@ -52,7 +50,6 @@ var TweetList = React.createClass({
 
 var Tweet = React.createClass({
   render: function(what) {
-    console.log("Tweet render", this.props.author, this.props.children, what, this, this.props);
     return (
       <li className="tweet">
         <blockquote>"{this.props.children}"</blockquote>

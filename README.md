@@ -1,4 +1,4 @@
-#Jason Lydon: Sanborn Media => Quick Code Exercise
+#Jason Lydon: Quick Code Exercise using Gulp, Jade, Stylus, REACT, JSON, Twitter and Instagram.
 
 ***
 
@@ -13,7 +13,7 @@ __Deliverables:__
 * Some instructions on standing it up (What do we need? Node.js? PHP? How do we fire it up?)
 	* See the "Run This Project Locally" section below
 * A link to the site on your own hosting with search engine indexing disabled.
-	* <http://jasonlydon.com/remotelife/> 
+	* <http://jasonlydon.com/remotelife/> <http://jasonlydon.com/remotelife/robots.txt> 
 
 __Basic site requirements:__
 
@@ -30,7 +30,7 @@ __Basic site requirements:__
 * Bring in some fun flourish with Javascript, CSS or mode of your choosing. (Think … Processing.js, Epoch.js, D3, Polymaps, etc)
 	* Animated SVG as logo
 * Use at least 1 third party service (Think … Twitter API, Google Data, FaceBook OpenGraph, WolframAlpha, etc) on the front- or back-end
-	* Instagram API and Twitter API used 
+	* Instagram API with string replace and Twitter API with REACT used in client
 
 ***
 

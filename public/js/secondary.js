@@ -2,9 +2,10 @@ var TweetBox = React.createClass({
   getTweets: function() {
     var tweet_request = new XMLHttpRequest();
     tweet_request.open('GET', this.props.url, true);
-    tweet_request.onload = function() {
-      if (this.status >= 200 && this.status < 400) {
-        var data = JSON.parse(this.response);
+    tweet_request.onload = function(evt) {
+      // console.log("STATUS", tweet_request.status, tweet_request.response, tweet_request, gt)
+      if (tweet_request.status >= 200 && tweet_request.status < 400) {
+        var data = JSON.parse(tweet_request.response);
         this.setState({data: data});
       } else {
         this.setState({data: sampleTweet});

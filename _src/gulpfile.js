@@ -1,7 +1,7 @@
 var fs = require('fs'),
 		gulp = require('gulp'),
     gutil = require('gulp-util'),
-    jade = require('gulp-jade'),
+    pug = require('gulp-pug'),
     rename = require('gulp-rename'),
     stylus = require('gulp-stylus'),
 		concat = require('gulp-concat'),
@@ -11,7 +11,7 @@ var fs = require('fs'),
 		autoprefixer = require('autoprefixer'),
 		cssnano = require('gulp-cssnano'),
 		combineMq = require('gulp-combine-mq'),
-		mainNavJson = new Object(),		
+		mainNavJson = [],		
     pageCounter = 0,
     titleRegExp = /var title \=(.*?)\n/g;
 
@@ -26,20 +26,17 @@ gulp.task('markup', function() {
   	if (err) throw err;
   	files.map(function(file,ind,arr){
   		// console.log(file);
-  		if(file.indexOf(".jade") > 0){
+  		if(file.indexOf(".pug") > 0){
       	currentFile = fs.readFileSync("./markup/" + file, 'utf8');
       	fileName = file;
 				pageTitle = currentFile.match(titleRegExp)[0].replace('var title = \'','').replace('\'\n','') || "NO VALUE";
-				mainNavJson["page" + pageCounter] = {
-					"file":fileName,
-					"title":pageTitle
-				}
+				mainNavJson.push({"file":fileName,"title":pageTitle});
 				pageCounter++;      
       } 
 			console.log(mainNavJson);
   	});  	
-		gulp.src('./markup/*.jade')
-			.pipe(jade({
+		gulp.src('./markup/*.pug')
+			.pipe(pug({
 				pretty: false,
 				data: {
 					"pages": mainNavJson,
@@ -80,7 +77,7 @@ gulp.task('js', function () {
 
 
 gulp.task('watch', function() {
-    gulp.watch('./markup/**/*.jade', ['markup'])
+    gulp.watch('./markup/**/*.pug', ['markup'])
         .on('change', function(evt) {
             console.log(evt.type, " ==> ", evt.path);
         });

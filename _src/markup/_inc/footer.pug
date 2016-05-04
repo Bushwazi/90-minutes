@@ -8,7 +8,7 @@ footer
 	ul.nav
 		li: strong PAGES
 		for page in pages
-			li: a(href='#{page.file.replace(".jade", ".html")}' title="Learn more about #{page.title}") &bull; #{page.title}
+			li: a(href=page.file.replace(".pug", ".html") title="Learn more about " + page.title) &bull; #{page.title}
 	small 
 		| Copyright &copy; 2016 Jason Lydon. All rights reserved.
 		br
